@@ -69,4 +69,17 @@ public class LoginController {
         }
 
     }
+
+    // 유저 정보 (로그인 유무)
+    @GetMapping("user")
+    public ResponseEntity<Member> user(HttpSession session){
+        Member loggedInUser = (Member) session.getAttribute("loggedInUser");
+        if (loggedInUser != null) {
+            // 세션에서 가져온 사용자 정보를 그대로 반환 객체로 저장해서 그대로 저장해도 된다.
+            return ResponseEntity.ok(loggedInUser); // 200
+        } else {
+            // 로그인되지 않은 경우
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // 401 Unauthorized
+        }
+    }
 }
