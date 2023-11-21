@@ -1,4 +1,4 @@
-package project.kakaochatanalyzer.domain;
+package project.kakaochatanalyzer.Login.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

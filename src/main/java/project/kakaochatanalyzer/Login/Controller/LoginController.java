@@ -1,4 +1,4 @@
-package project.kakaochatanalyzer.controller;
+package project.kakaochatanalyzer.Login.Controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import project.kakaochatanalyzer.domain.Member;
-import project.kakaochatanalyzer.service.MemberService;
+import project.kakaochatanalyzer.Login.MemberForm;
+import project.kakaochatanalyzer.Login.entity.Member;
+import project.kakaochatanalyzer.Login.service.MemberService;
 
 @RestController
 @RequestMapping("/api")
@@ -74,8 +75,18 @@ public class LoginController {
     @GetMapping("user")
     public ResponseEntity<Member> user(HttpSession session){
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
+        // userName 별로 db조회
         if (loggedInUser != null) {
             // 세션에서 가져온 사용자 정보를 그대로 반환 객체로 저장해서 그대로 저장해도 된다.
+            // userName
+            // 이름(아이디)로 chatroom_db를 조회 해서 chat_room을 가지고와
+            /*{"userName":"GOGO",
+            "chat_room":[{ "room_number": 1},
+                        { "room_number": 2},
+                        { "room_number": 3}]
+                        }]
+            */
+            //이 형태로 된 것을 객체로 변환을 리턴
             return ResponseEntity.ok(loggedInUser); // 200
         } else {
             // 로그인되지 않은 경우

@@ -1,6 +1,6 @@
-package project.kakaochatanalyzer.repository;
+package project.kakaochatanalyzer.Login.repository;
 
-import project.kakaochatanalyzer.domain.Member;
+import project.kakaochatanalyzer.Login.entity.Member;
 
 import java.util.List;
 import java.util.Optional;

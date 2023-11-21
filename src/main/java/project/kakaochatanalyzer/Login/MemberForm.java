@@ -1,4 +1,4 @@
-package project.kakaochatanalyzer.controller;
+package project.kakaochatanalyzer.Login;
 
 public class MemberForm {
     /* HTML의 인자 값 name="name" 이랑 같이 매핑이 된다.

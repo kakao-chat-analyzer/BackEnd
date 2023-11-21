@@ -1,11 +1,9 @@
-package project.kakaochatanalyzer.service;
+package project.kakaochatanalyzer.Login.service;
 
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.kakaochatanalyzer.domain.Member;
-import project.kakaochatanalyzer.repository.MemberRepository;
+import project.kakaochatanalyzer.Login.entity.Member;
+import project.kakaochatanalyzer.Login.repository.MemberRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Transactional
