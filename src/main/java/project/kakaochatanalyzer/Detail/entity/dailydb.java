@@ -14,7 +14,8 @@ public class dailydb {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "member_id")
+    @ManyToOne
+    @JoinColumn(name = "member_id")
     private Long memberId;
 
     @ManyToOne

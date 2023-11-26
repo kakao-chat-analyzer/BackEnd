@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DailydbRepository{
+
+
     dailydb save(dailydb dailydb);
     Optional<dailydb> findById(Long Id);
     Optional<dailydb> findBymemberId(Long memberId);
