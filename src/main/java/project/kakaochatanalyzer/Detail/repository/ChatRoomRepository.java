@@ -7,16 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ChatRoomRepository {
-    static Long findMaxRoomNumber() {
-        return null;
-    }
 
-    static ChatRoom save(ChatRoom chatRoom) {
-        return null;
-    }
+    ChatRoom save(ChatRoom chatRoom);
     Optional<ChatRoom> findByid(Long id);
     Optional<ChatRoom> findByroomNumber(Long findByroomNumber);
     List<ChatRoom> findAll();
 
-    void save(dailydb dailyDbEntity);
 }

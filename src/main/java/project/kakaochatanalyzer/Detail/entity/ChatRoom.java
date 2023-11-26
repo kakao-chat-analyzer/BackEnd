@@ -2,15 +2,19 @@ package project.kakaochatanalyzer.Detail.entity;
 
 import jakarta.persistence.*;
 import project.kakaochatanalyzer.Detail.repository.ChatRoomRepository;
+import project.kakaochatanalyzer.Login.entity.Member;
 
 @Entity
 @Table(name = "chatroom")
 public class ChatRoom {
-    public ChatRoomRepository DailydbRepository;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "memberId")
+    private Member member;
+    @Column(name = "roomNumber")
     private Long roomNumber;
 
     public void setId(Long id) {
@@ -21,4 +25,11 @@ public class ChatRoom {
         this.roomNumber = roomNumber;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public Long getRoomNumber() {
+        return roomNumber;
+    }
 }

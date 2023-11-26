@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import project.kakaochatanalyzer.Login.entity.Member;
 
 //상세페이지 db
 @Entity
@@ -15,11 +16,11 @@ public class dailydb {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Long memberId;
+    @JoinColumn(name = "memberId")
+    private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "chat_room_id")
+    @JoinColumn(name = "chatroomId")
     private ChatRoom chatRoom;
 
     @Column(name = "frequently")
@@ -46,12 +47,12 @@ public class dailydb {
         this.id = id;
     }
 
-    public Long getMemberId() {
-        return memberId;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public ChatRoom getChatRoom() {
