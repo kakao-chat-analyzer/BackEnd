@@ -2,7 +2,6 @@ package project.kakaochatanalyzer.Detail.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
-import project.kakaochatanalyzer.Detail.entity.dailydb;
 
 import java.util.Optional;
 
