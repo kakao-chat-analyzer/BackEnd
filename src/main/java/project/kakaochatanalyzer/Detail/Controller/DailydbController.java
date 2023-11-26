@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import project.kakaochatanalyzer.Detail.entity.dailydb;
+import project.kakaochatanalyzer.Detail.entity.Dailydb;
 import project.kakaochatanalyzer.Detail.service.ChatRoomService;
 import project.kakaochatanalyzer.Detail.service.DailydbService;
 
@@ -25,8 +25,8 @@ public class DailydbController {
 
     //디테일 페이지
     @GetMapping("/detail")
-    public ResponseEntity<List<dailydb>> getAllEntities() {
-        List<dailydb> entities = service.getAllEntities();
+    public ResponseEntity<List<Dailydb>> getAllEntities() {
+        List<Dailydb> entities = service.getAllEntities();
         return ResponseEntity.ok(entities);
     }
     // Other methods as needed

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 import project.kakaochatanalyzer.Detail.repository.ChatRoomRepository;
+import project.kakaochatanalyzer.Login.entity.Member;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +22,19 @@ public class ChatRoomService {
         return chatRoomRepository.findAll();
     }
 
+    //나중에 처리
     public Long findMaxRoomNumber(Long roomNum){
         Optional<ChatRoom> chatRoom=  chatRoomRepository.findByroomNumber(roomNum);
         return chatRoom.map(ChatRoom::getRoomNumber)
                 .orElseThrow(() -> new IllegalStateException("roomNum에 해당하는 데이터가 없습니다."));
+    }
+
+    ////형진씨 Task1
+    public int saveChatRoom(Member member) {
+        //
+        // Member Id를 chatRoom db에서 조회해서
+        // 없으면 roomNumber를 1로 저장하고 있으면 그 값 + 1로 저장
+        //
+        return 0; // return을 어떤 걸 줄지는 선택해야한다.
     }
 }

@@ -9,7 +9,7 @@ import project.kakaochatanalyzer.Login.entity.Member;
 //상세페이지 db
 @Entity
 @Table(name = "dailydb")
-public class dailydb {
+public class Dailydb {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

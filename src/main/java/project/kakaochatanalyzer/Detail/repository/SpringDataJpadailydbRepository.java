@@ -2,21 +2,21 @@ package project.kakaochatanalyzer.Detail.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
-import project.kakaochatanalyzer.Detail.entity.dailydb;
+import project.kakaochatanalyzer.Detail.entity.Dailydb;
 
 import java.util.Optional;
 
-public interface SpringDataJpadailydbRepository extends JpaRepository<dailydb, Long>, DailydbRepository {
+public interface SpringDataJpadailydbRepository extends JpaRepository<Dailydb, Long>, DailydbRepository {
     @Override
-    Optional<dailydb> findBymemberId(Long memberId);
+    Optional<Dailydb> findBymemberId(Long memberId);
     @Override
-    Optional<dailydb> findBychatRoom(ChatRoom chatRoom);
+    Optional<Dailydb> findBychatRoom(ChatRoom chatRoom);
     @Override
-    Optional<dailydb> findByfrequently(Integer frequently);
+    Optional<Dailydb> findByfrequently(Integer frequently);
     @Override
-    Optional<dailydb> findBykeyword(String keyword);
+    Optional<Dailydb> findBykeyword(String keyword);
     @Override
-    Optional<dailydb> findBychatTimes(Integer chatTimes);
+    Optional<Dailydb> findBychatTimes(Integer chatTimes);
     @Override
-    Optional<dailydb> findBytotalMessage(Integer totalMessage);
+    Optional<Dailydb> findBytotalMessage(Integer totalMessage);
 }
