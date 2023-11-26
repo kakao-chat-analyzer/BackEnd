@@ -8,4 +8,7 @@ import java.util.Optional;
 public interface SpringDataJpaChatRoomRepository extends JpaRepository<ChatRoom, Long>, ChatRoomRepository{
     @Override
     Optional<ChatRoom> findByroomNumber(Long room_number);
+
+    @Override
+    Optional<ChatRoom> findByMemberId(Long id);
 }
