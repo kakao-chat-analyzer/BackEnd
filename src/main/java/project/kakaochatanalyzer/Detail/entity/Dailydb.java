@@ -6,6 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import project.kakaochatanalyzer.Login.entity.Member;
 
+import java.time.LocalDate;
+import java.util.List;
+
 //상세페이지 db
 @Entity
 @Table(name = "dailydb")
@@ -23,10 +26,13 @@ public class Dailydb {
     @ManyToOne
     @JoinColumn(name = "chatroomId")
     private ChatRoom chatRoom;
-
+    @Column(name ="date")
+    private LocalDate date;
     @Column(name = "frequently")
     private Integer frequently;
-
+    @Column(name = "dailyMessages",columnDefinition = "TEXT",length = 100000)
+    @Convert(converter = StringListConverter.class)
+    private List<String> dailyMessages;
 
     @Column(name = "keyword")
     private String keyword;
@@ -34,7 +40,7 @@ public class Dailydb {
     @Column(name = "chattimes")
     private Integer chatTimes;
 
-    @Column(name = "total_message", length = 5000)
+    @Column(name = "total_message",columnDefinition = "TEXT",length = 100000)
     private String totalMessage;
 
 
@@ -77,6 +83,22 @@ public class Dailydb {
 
     public void setFrequently(Integer frequently) {
         this.frequently = frequently;
+    }
+
+    public List<String> getDailyMessages() {
+        return dailyMessages;
+    }
+
+    public void setDailyMessages(List<String> dailyMessages) {
+        this.dailyMessages = dailyMessages;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public String getKeyword() {

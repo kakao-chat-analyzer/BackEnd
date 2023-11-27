@@ -39,6 +39,9 @@ public class DailydbService {
         System.out.println(processed_dailydb.get(0).getKeyword());
         System.out.println(processed_dailydb.get(0).getChatTimes());
         System.out.println(processed_dailydb.get(0).getTotalMessage());
+        System.out.println(processed_dailydb.get(0).getDailyMessages());
+        System.out.println(processed_dailydb.get(0).getDate());
+
 
         processed_dailydb.forEach(dailydb -> {
             dailydb.setMember(member);

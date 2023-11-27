@@ -71,12 +71,6 @@ public class FileController {
         //fastapi의 response 받기
         List<Dailydb> processedData = responseEntity.getBody();
 
-        //data 확인
-        System.out.println(processedData.get(0).getFrequently()); //
-        System.out.println(processedData.get(0).getKeyword());
-        System.out.println(processedData.get(0).getChatTimes());
-        System.out.println(processedData.get(0).getTotalMessage());
-
         //session 정보
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         String userId = loggedInUser.getUserId();
