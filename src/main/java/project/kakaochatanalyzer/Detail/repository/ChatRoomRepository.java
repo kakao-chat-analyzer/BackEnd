@@ -12,5 +12,6 @@ public interface ChatRoomRepository {
     Optional<ChatRoom> findByroomNumber(Long findByroomNumber);
     Optional<ChatRoom> findByMemberId(Long id);
     List<ChatRoom> findAll();
+    Optional<Long> findMaxRoomNumberByMemberId(Long memberId);
 
 }

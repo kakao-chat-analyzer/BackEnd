@@ -15,6 +15,6 @@ public interface DailydbRepository{
     Optional<Dailydb> findByfrequently(Integer frequently);
     Optional<Dailydb> findBykeyword(String keyword);
     Optional<Dailydb> findBychatTimes(Integer chatTimes);
-    Optional<Dailydb> findBytotalMessage(Integer totalMessage);
+    Optional<Dailydb> findBytotalMessage(String totalMessage);
     List<Dailydb> findAll();
 }

@@ -7,6 +7,8 @@ import project.kakaochatanalyzer.Login.entity.Member;
 @Entity
 @Table(name = "chatroom")
 public class ChatRoom {
+    public ChatRoom() {
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,6 +18,10 @@ public class ChatRoom {
     private Member member;
     @Column(name = "roomNumber")
     private Long roomNumber;
+
+    public ChatRoom(Member member) {
+        this.member = member;
+    }
 
     public void setId(Long id) {
         this.id = id;

@@ -10,7 +10,8 @@ import project.kakaochatanalyzer.Login.entity.Member;
 @Entity
 @Table(name = "dailydb")
 public class Dailydb {
-
+    public Dailydb() {
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,9 +34,16 @@ public class Dailydb {
     @Column(name = "chattimes")
     private Integer chatTimes;
 
-    @Column(name = "total_message")
-    private Integer totalMessage;
+    @Column(name = "total_message", length = 5000)
+    private String totalMessage;
 
+
+    // constructor
+    // 생성자
+    public Dailydb(Member member, ChatRoom chatRoom) {
+        this.member = member;
+        this.chatRoom = chatRoom;
+    }
     // getters and setters
 
 
@@ -87,11 +95,11 @@ public class Dailydb {
         this.chatTimes = chatTimes;
     }
 
-    public Integer getTotalMessage() {
+    public String getTotalMessage() {
         return totalMessage;
     }
 
-    public void setTotalMessage(Integer totalMessage) {
+    public void setTotalMessage(String totalMessage) {
         this.totalMessage = totalMessage;
     }
 }

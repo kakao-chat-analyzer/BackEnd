@@ -14,37 +14,43 @@ import java.util.Optional;
 
 @Transactional
 public class DailydbService {
-    private final DailydbRepository userRepository;
+    private DailydbRepository dailyDbRepository;
     private ChatRoomRepository chatRoomRepository;
     private MemberRepository memberRepository;
 
     @Autowired
-    public DailydbService(DailydbRepository userRepository) {
-        this.userRepository = userRepository;
+    public DailydbService(DailydbRepository dailyDbRepository) {
+        this.dailyDbRepository = dailyDbRepository;
     }
     public List<Dailydb> getAllUsers() {
-        return userRepository.findAll();
+        return dailyDbRepository.findAll();
     }
     public List<Dailydb> getAllEntities() {
-        return userRepository.findAll();
+        return dailyDbRepository.findAll();
     }
 
     //형진씨 Task 2
-    public int saveProcessedData(Dailydb processed_dailydb, Member member, ChatRoom chatRoom) {
+    public int saveProcessedData(List<Dailydb> processed_dailydb, Member member, ChatRoom chatRoom) {
         // Dailydb에 processed_dailydb 데이터를 저장
-        processed_dailydb.setMember(member);
-        processed_dailydb.setChatRoom(chatRoom);
-        userRepository.save(processed_dailydb);
-
-        // Member 정보를 저장
-
-        Member savedMember = memberRepository.save(new Member());
-        Optional<Member> foundMember = memberRepository.findByUserId("someUserId");
-
-        // ChatRoom 정보를 저장
-        chatRoomRepository.save(chatRoom);
+        //data 가져오기
+        //data 확인
+        System.out.println("여기까지 왔따아아아");
+        System.out.println(processed_dailydb.get(0).getFrequently()); //
+        System.out.println(processed_dailydb.get(0).getKeyword());
+        System.out.println(processed_dailydb.get(0).getChatTimes());
+        System.out.println(processed_dailydb.get(0).getTotalMessage());
+        for (Dailydb dailydb: processed_dailydb){
+            //data 객체에 넣기
+            Dailydb newDailyDb = new Dailydb(member, chatRoom);
+            newDailyDb.setFrequently(dailydb.getFrequently());
+            newDailyDb.setKeyword(dailydb.getKeyword());
+            newDailyDb.setChatTimes(dailydb.getChatTimes());
+            newDailyDb.setTotalMessage(dailydb.getTotalMessage());
+            //DB 저장
+            dailyDbRepository.save(newDailyDb);
+        }
 
         // 저장된 Dailydb 엔티티의 ID 반환
-        return processed_dailydb.getId().intValue();
+        return 1;
     }
 }
