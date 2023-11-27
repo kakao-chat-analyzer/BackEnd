@@ -32,7 +32,6 @@ public class DailydbService {
     //형진씨 Task 2
     public int saveProcessedData(List<Dailydb> processed_dailydb, Member member, ChatRoom chatRoom) {
         // Dailydb에 processed_dailydb 데이터를 저장
-        //data 가져오기
         //data 확인
         System.out.println("여기까지 왔따아아아");
         System.out.println(processed_dailydb.get(0).getFrequently()); //
@@ -42,7 +41,6 @@ public class DailydbService {
         System.out.println(processed_dailydb.get(0).getDailyMessages());
         System.out.println(processed_dailydb.get(0).getDate());
 
-
         processed_dailydb.forEach(dailydb -> {
             dailydb.setMember(member);
             dailydb.setChatRoom(chatRoom);
@@ -50,18 +48,6 @@ public class DailydbService {
             dailyDbRepository.save(dailydb);
         });
 
-//        for (Dailydb dailydb: processed_dailydb){
-            //data 객체에 넣기
-//            Dailydb newDailyDb = new Dailydb(member, chatRoom);
-
-//            dailyDbRepository.save(dailydb);
-//        }
-
-        // 저장된 Dailydb 엔티티의 ID 반환
         return 1;
     }
 }
-//            newDailyDb.setFrequently(dailydb.getFrequently());
-//            newDailyDb.setKeyword(dailydb.getKeyword());
-//            newDailyDb.setChatTimes(dailydb.getChatTimes());
-//            newDailyDb.setTotalMessage(dailydb.getTotalMessage());
