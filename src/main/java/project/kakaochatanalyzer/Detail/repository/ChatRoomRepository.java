@@ -10,7 +10,7 @@ public interface ChatRoomRepository {
     ChatRoom save(ChatRoom chatRoom);
     Optional<ChatRoom> findByid(Long id);
     Optional<ChatRoom> findByroomNumber(Long findByroomNumber);
-    Optional<ChatRoom> findByMemberId(Long id);
+    List<ChatRoom> findByMemberId(Long id);
     List<ChatRoom> findAll();
     Optional<Long> findMaxRoomNumberByMemberId(Long memberId);
 

@@ -39,18 +39,26 @@ public class DailydbService {
         System.out.println(processed_dailydb.get(0).getKeyword());
         System.out.println(processed_dailydb.get(0).getChatTimes());
         System.out.println(processed_dailydb.get(0).getTotalMessage());
-        for (Dailydb dailydb: processed_dailydb){
-            //data 객체에 넣기
-            Dailydb newDailyDb = new Dailydb(member, chatRoom);
-            newDailyDb.setFrequently(dailydb.getFrequently());
-            newDailyDb.setKeyword(dailydb.getKeyword());
-            newDailyDb.setChatTimes(dailydb.getChatTimes());
-            newDailyDb.setTotalMessage(dailydb.getTotalMessage());
+
+        processed_dailydb.forEach(dailydb -> {
+            dailydb.setMember(member);
+            dailydb.setChatRoom(chatRoom);
             //DB 저장
-            dailyDbRepository.save(newDailyDb);
-        }
+            dailyDbRepository.save(dailydb);
+        });
+
+//        for (Dailydb dailydb: processed_dailydb){
+            //data 객체에 넣기
+//            Dailydb newDailyDb = new Dailydb(member, chatRoom);
+
+//            dailyDbRepository.save(dailydb);
+//        }
 
         // 저장된 Dailydb 엔티티의 ID 반환
         return 1;
     }
 }
+//            newDailyDb.setFrequently(dailydb.getFrequently());
+//            newDailyDb.setKeyword(dailydb.getKeyword());
+//            newDailyDb.setChatTimes(dailydb.getChatTimes());
+//            newDailyDb.setTotalMessage(dailydb.getTotalMessage());

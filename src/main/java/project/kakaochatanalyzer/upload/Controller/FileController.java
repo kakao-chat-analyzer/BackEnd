@@ -45,7 +45,6 @@ public class FileController {
         members.setUserName("GOGOGO");
         members.setUserPw("1234442244");
         members.setUserEmail("123@example.com");
-        memberService.join(members);
         session.setAttribute("loggedInUser",members);
         //// DUMMY ////
 
@@ -78,17 +77,13 @@ public class FileController {
         System.out.println(processedData.get(0).getChatTimes());
         System.out.println(processedData.get(0).getTotalMessage());
 
-
+        //session 정보
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         String userId = loggedInUser.getUserId();
-        System.out.println("시작9");
         Optional<Member> userData = memberRepository.findByuserId(userId);
-        System.out.println("시작4");
         Member member = userData.orElse(null);
         //DB 저장
-        System.out.println("시작1");
         ChatRoom newChatRoom = chatRoomService.saveChatRoom(member);
-        System.out.println("시작2"+newChatRoom.getRoomNumber());
         dailydbService.saveProcessedData(processedData, member, newChatRoom);
 
 
