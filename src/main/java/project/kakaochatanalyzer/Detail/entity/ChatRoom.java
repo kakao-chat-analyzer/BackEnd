@@ -32,4 +32,8 @@ public class ChatRoom {
     public Long getRoomNumber() {
         return roomNumber;
     }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }

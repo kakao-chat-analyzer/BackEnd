@@ -31,10 +31,24 @@ public class ChatRoomService {
 
     ////형진씨 Task1
     public int saveChatRoom(Member member) {
-        //
-        // Member Id를 chatRoom db에서 조회해서
+
+        // Member Id를 ChatRoom db에서 조회해서
         // 없으면 roomNumber를 1로 저장하고 있으면 그 값 + 1로 저장
-        //
-        return 0; // return을 어떤 걸 줄지는 선택해야한다.
+        ChatRoom existChatRoom = ChatRoomRepository.findByMemberId(member.getId());
+
+        if(existChatRoom==null){
+            ChatRoom newChatRoom=new ChatRoom();
+            newChatRoom.setMember(member);
+            newChatRoom.setRoomNumber(1L);
+            chatRoomRepository.save(newChatRoom);
+            return 1;
+        }
+        else{
+            Long incrementRoomNumber = existChatRoom.getRoomNumber()+1;
+            existChatRoom.setRoomNumber(incrementRoomNumber);
+            chatRoomRepository.save(existChatRoom);
+            return incrementRoomNumber.intValue();
+        }
+        //return 0; // return을 어떤 걸 줄지는 선택해야한다. 저장한 채팅방Number
     }
 }
