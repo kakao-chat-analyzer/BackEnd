@@ -34,6 +34,10 @@ public class Dailydb {
     @Convert(converter = StringListConverter.class)
     private List<String> dailyMessages;
 
+    @Column(name = "dailyUser",columnDefinition = "TEXT",length = 1000000)
+    @Convert(converter = StringListConverter.class)
+    private List<String> dailyUser;
+
     @Column(name = "keyword")
     private String keyword;
 
@@ -91,6 +95,14 @@ public class Dailydb {
 
     public void setDailyMessages(List<String> dailyMessages) {
         this.dailyMessages = dailyMessages;
+    }
+
+    public List<String> getDailyUser() {
+        return dailyUser;
+    }
+
+    public void setDailyUser(List<String> dailyUser) {
+        this.dailyUser = dailyUser;
     }
 
     public LocalDate getDate() {

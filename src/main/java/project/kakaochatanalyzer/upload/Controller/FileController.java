@@ -68,10 +68,10 @@ public class FileController {
 //                Dailydb.class  //Dailydb class로 변환
                 new ParameterizedTypeReference<List<Dailydb>>() {}
         );
-
+        System.out.println("asfasfasfaf");
         //fastapi의 response 받기
         List<Dailydb> processedData = responseEntity.getBody();
-
+        System.out.println("asdasF?AF?ASF");
         //session 정보
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         String userId = loggedInUser.getUserId();
