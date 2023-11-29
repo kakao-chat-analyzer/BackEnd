@@ -48,4 +48,8 @@ public class ChatRoomService {
         return newChatRoom;
         //return 0; return을 어떤 걸 줄지는 선택해야한다. 저장한 채팅방Number
     }
+
+    public static Optional<ChatRoom> getDataByMemberIdAndRoomNumber(String memberId, Long roomNumber) {
+        return ChatRoomRepository.findByMemberIdAndRoomNumber(memberId, roomNumber);
+    }
 }

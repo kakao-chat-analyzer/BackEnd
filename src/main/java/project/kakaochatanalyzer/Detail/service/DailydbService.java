@@ -9,6 +9,7 @@ import project.kakaochatanalyzer.Detail.repository.DailydbRepository;
 import project.kakaochatanalyzer.Login.entity.Member;
 import project.kakaochatanalyzer.Login.repository.MemberRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +23,13 @@ public class DailydbService {
     public DailydbService(DailydbRepository dailyDbRepository) {
         this.dailyDbRepository = dailyDbRepository;
     }
-    public List<Dailydb> getAllUsers() {
-        return dailyDbRepository.findAll();
-    }
+//    public List<Dailydb> getAllUsers() {return dailyDbRepository.findAll();}
     public List<Dailydb> getAllEntities() {
         return dailyDbRepository.findAll();
+    }
+
+    public Optional<Dailydb> getDailyData(Long memberId, Long chatroomId, LocalDate date) {
+        return dailyDbRepository.findByMemberIdAndChatRoomAndDate(memberId, chatroomId, date);
     }
 
     //형진씨 Task 2
@@ -47,6 +50,19 @@ public class DailydbService {
             //DB 저장
             dailyDbRepository.save(dailydb);
         });
+
+//        public void updateKeywords(String userId, Long chatroomNum, LocalDate date, List<String> keywords) {
+//            // Find the Dailydb entity based on user ID, chat room number, and date
+//            Optional<Dailydb> optionalDailydb = dailyDbRepository.findByMemberIdAndChatRoomAndDate(userId, chatroomNum, date);
+//
+//            optionalDailydb.orElse(dailydb -> {
+//                // Update the keywords in the found Dailydb entity
+//                dailydb.setKeywords(keywords);
+//                // Save the updated entity back to the database
+//                dailyDbRepository.save(dailydb);
+//            });
+//        }
+
         return 1;
     }
 }
