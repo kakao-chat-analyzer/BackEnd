@@ -14,11 +14,10 @@ public class StringListConverter implements AttributeConverter<List<String>, Str
     @Override
     public String convertToDatabaseColumn(List<String> attribute) {
         return String.join(DELIMITER, attribute);
-    }
+    } //결합
 
     @Override
     public List<String> convertToEntityAttribute(String dbData) {
         return Arrays.asList(dbData.split(DELIMITER));
-    }
+    } //구분
 }
-

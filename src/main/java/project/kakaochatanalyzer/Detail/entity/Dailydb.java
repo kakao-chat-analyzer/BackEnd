@@ -54,8 +54,6 @@ public class Dailydb {
         this.member = member;
         this.chatRoom = chatRoom;
     }
-    // getters and setters
-
 
     public Long getId() {
         return id;

@@ -75,14 +75,14 @@ public class FileController {
         //session 정보
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         String userId = loggedInUser.getUserId();
-        Optional<Member> userData = memberRepository.findByuserId(userId);
+        Optional<Member> userData = memberRepository.findByuserId(userId); //Optional은 NPE(NullPointerException)를 방지
         Member member = userData.orElse(null);
         //DB 저장
         ChatRoom newChatRoom = chatRoomService.saveChatRoom(member);
         dailydbService.saveProcessedData(processedData, member, newChatRoom);
 
 
-//        return ResponseEntity.ok(processedData);
+//      return ResponseEntity.ok(processedData);
         return 200;
     }
     @PostMapping("/keyword")

@@ -32,7 +32,7 @@ public class DailydbService {
     //형진씨 Task 2
     public int saveProcessedData(List<Dailydb> processed_dailydb, Member member, ChatRoom chatRoom) {
         // Dailydb에 processed_dailydb 데이터를 저장
-        //data 확인
+        // data 확인
         System.out.println("여기까지 왔따아아아");
         System.out.println(processed_dailydb.get(0).getFrequently()); //
         System.out.println(processed_dailydb.get(0).getKeyword());
@@ -47,7 +47,6 @@ public class DailydbService {
             //DB 저장
             dailyDbRepository.save(dailydb);
         });
-
         return 1;
     }
 }
