@@ -1,6 +1,7 @@
 package project.kakaochatanalyzer.Detail.repository;
 
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
+import project.kakaochatanalyzer.Login.entity.Member;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,5 +14,5 @@ public interface ChatRoomRepository {
     List<ChatRoom> findByMemberId(Long id);
     List<ChatRoom> findAll();
     Optional<Long> findMaxRoomNumberByMemberId(Long memberId);
-
+    Optional<ChatRoom> findByMemberIdAndRoomNumber(Member memberId, Long roomNumber);
 }
