@@ -1,5 +1,6 @@
 package project.kakaochatanalyzer.Detail.Controller;
 
+<<<<<<< HEAD
 import org.springframework.http.ResponseEntity;
 <<<<<<< HEAD
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +18,16 @@ import project.kakaochatanalyzer.Login.entity.Member;
 
 import java.util.Optional;
 >>>>>>> a1a0c5bea3f9b243d41543e2da537f8848930a11
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+>>>>>>> parent of a1a0c5b (Main Page Test)
 
 import java.util.Optional;
 
 @RestController
 public class MainController {
+<<<<<<< HEAD
 <<<<<<< HEAD
     private final ChatRoomService chatRoomService;
 
@@ -44,5 +50,10 @@ public class MainController {
 
         return result.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+=======
+    @GetMapping("/main")
+    public String mainPage() {
+        return "main"; // Refers to a Thymeleaf template named main.html
+>>>>>>> parent of a1a0c5b (Main Page Test)
     }
 }
