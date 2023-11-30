@@ -103,56 +103,15 @@ public class FileController {
         String userId = loggedInUser.getUserId();
         //3. dailydbController에서의 get랑 논리가 비슷한데 위의 date,chatroonNum,session 정보를 활용해서
         //4. dailyDb에서 해당 데이터의 totalmessage를 뽑아낸다.
-        Optional<Dailydb> dailyData = dailydbService.getDailyData(loggedInUser.getId(), chatroomNum, date);
 
         //5. 이 totalmessage를 fastapi로 post로 보내는 것이다.
-        if (dailyData.isPresent()) {
-            // 검색된 Dailydb에서 totalMessage 추출
-            String totalMessage = dailyData.get().getTotalMessage();
 
-            // totalMessage를 FastAPI로 보내고 키워드 수신
-            String URL = "http://localhost:8000/api/keyword";
-            RestTemplate restTemplate = new RestTemplate();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-
-            Map<String, Object> requestBody = new HashMap<>();
-            requestBody.put("totalMessage", totalMessage);
-
-            HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
-
-            List<String> keywords = getKeywordsFromFastAPI(URL, restTemplate, requestEntity);
-
-            // 키워드를 데이터베이스에 업데이트
-            // dailydbService.updateKeywords(userId, chatroomNum, date, keywords);
-            //dailydbService.saveProcessedData(processedData, member, newChatRoom);
-
-            // 성공 상태 코드 1 반환
-            return 1;
-        } else {
-            // 데이터가 없을 경우 실패 상태 코드 0 반환
-            return 0;
-        }
-    }
-
-    private List<String> getKeywordsFromFastAPI(String URL, RestTemplate restTemplate,
-                                                HttpEntity<Map<String, Object>> requestEntity) {
-        ResponseEntity<List<String>> responseEntity = restTemplate.exchange(
-                URL,
-                HttpMethod.POST,
-                requestEntity,
-                new ParameterizedTypeReference<List<String>>() {
-                }
-        );
 
         //6. 그럼 보내고 받아온 데이터는 키워드가 될 것인데
         //7. 그 db에서 조회한 그 부분의 keyword에 채워 넣어야 한다  (db의 비어있는 keyword 채워넣기)
         //8. 끝
 
-              return responseEntity.getBody();
 
-
-       // return 1;
+         return 1;
     }
-
 }

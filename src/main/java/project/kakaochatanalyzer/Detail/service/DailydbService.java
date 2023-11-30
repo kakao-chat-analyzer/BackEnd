@@ -28,9 +28,7 @@ public class DailydbService {
         return dailyDbRepository.findAll();
     }
 
-    public Optional<Dailydb> getDailyData(Long memberId, Long chatroomId, LocalDate date) {
-        return dailyDbRepository.findByMemberIdAndChatRoomAndDate(memberId, chatroomId, date);
-    }
+
 
     //형진씨 Task 2
     public int saveProcessedData(List<Dailydb> processed_dailydb, Member member, ChatRoom chatRoom) {
