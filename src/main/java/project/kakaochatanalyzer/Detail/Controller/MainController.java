@@ -2,13 +2,6 @@ package project.kakaochatanalyzer.Detail.Controller;
 
 <<<<<<< HEAD
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import project.kakaochatanalyzer.Detail.entity.ChatRoom;
-import project.kakaochatanalyzer.Detail.service.ChatRoomService;
-=======
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,16 +10,18 @@ import project.kakaochatanalyzer.Detail.repository.ChatRoomRepository;
 import project.kakaochatanalyzer.Login.entity.Member;
 
 import java.util.Optional;
+<<<<<<< HEAD
 >>>>>>> a1a0c5bea3f9b243d41543e2da537f8848930a11
 =======
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 >>>>>>> parent of a1a0c5b (Main Page Test)
+=======
+>>>>>>> 45a77cb27633e0795b02fd978b56d14f734404bc
 
-import java.util.Optional;
-
-@RestController
+@Controller
 public class MainController {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     private final ChatRoomService chatRoomService;
@@ -40,13 +35,14 @@ public class MainController {
                                               @RequestParam("roomNumber") Long roomNumber) {
         Optional<ChatRoom> result = ChatRoomService.getDataByMemberIdAndRoomNumber(memberId, roomNumber);
 =======
+=======
+>>>>>>> 45a77cb27633e0795b02fd978b56d14f734404bc
     private ChatRoomRepository chatRoomRepository;
 
     @GetMapping("/main")
     public ResponseEntity<ChatRoom> getData(@RequestParam("memberId") Member memberId,
                                             @RequestParam("roomNumber") Long roomNumber) {
         Optional<ChatRoom> result = chatRoomRepository.findByMemberIdAndRoomNumber(memberId, roomNumber);
->>>>>>> a1a0c5bea3f9b243d41543e2da537f8848930a11
 
         return result.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
