@@ -1,7 +1,6 @@
 package project.kakaochatanalyzer.Detail.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 import project.kakaochatanalyzer.Detail.repository.ChatRoomRepository;
@@ -51,5 +50,36 @@ public class ChatRoomService {
     public Optional<ChatRoom> getDataByMemberIdAndRoomNumber(Member memberId, Long roomNumber) {
         return ChatRoomRepository.findByMemberIdAndRoomNumber(memberId, roomNumber);
     }
+
+    public List<ChatRoom> getAllChatRooms() {
+        return chatRoomRepository.findAll();
+    }
+
+
+    public Optional<Long> getRoomNumberByUserId(Member member) {
+        // userId를 기반으로 roomNumber를 검색하는 로직을 구현합니다.
+        // 이는 데이터베이스 쿼리 등을 포함할 수 있습니다.
+        // 예를 들어:
+        // return chatRoomRepository.findRoomNumberByUserId(userId);
+        //return chatRoomRepository.findRoomNumberByUserId(member.getId());
+        return chatRoomRepository.findMaxRoomNumberByMemberId(member.getId());
+
+        //return chatRoomRepository.findRoomNumberByUserId(member.getUserId());
+
+        // 위의 라인을 실제 로직으로 대체하세요.
+        // 주어진 userId에 대한 roomNumber를 찾을 수 없으면 null을 반환합니다.
+
+    }
+//    public String getUserNameByUserId(Member member) {
+//        // userId를 기반으로 userName을 검색하는 로직을 구현합니다.
+//        // 이는 데이터베이스 쿼리 등을 포함할 수 있습니다.
+//        // 예를 들어:
+//        // return chatRoomRepository.findUserNameByUserId(userId);
+//        return chatRoomRepository.findUserNameByUserId(member.getUserName());
+//
+//        // 위의 라인을 실제 로직으로 대체하세요.
+//        // 주어진 userId에 대한 userName을 찾을 수 없으면 null을 반환합니다.
+//
+//    }
 
 }

@@ -24,7 +24,7 @@ public class DailydbController {
     }
 
     //디테일 페이지
-    @GetMapping("/detail")
+    @GetMapping("/analysis")
     public ResponseEntity<List<Dailydb>> getDailyDb(HttpSession session,
                                                     @RequestParam("date") LocalDate date,
                                                     @RequestParam("chatroomNum") Long chatroomNum) {
