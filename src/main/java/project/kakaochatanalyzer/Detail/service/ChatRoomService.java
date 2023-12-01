@@ -63,8 +63,7 @@ public class ChatRoomService {
         // return chatRoomRepository.findRoomNumberByUserId(userId);
         //return chatRoomRepository.findRoomNumberByUserId(member.getId());
         return chatRoomRepository.findMaxRoomNumberByMemberId(member.getId());
-
-        //return chatRoomRepository.findRoomNumberByUserId(member.getUserId());
+        //return chatRoomRepository.findRoomNumberByUserId(member.getId());
 
         // 위의 라인을 실제 로직으로 대체하세요.
         // 주어진 userId에 대한 roomNumber를 찾을 수 없으면 null을 반환합니다.

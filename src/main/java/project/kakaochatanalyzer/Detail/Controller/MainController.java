@@ -52,7 +52,7 @@ public class MainController {
 //    }
     @GetMapping("/chatroom")
     public ResponseEntity<Map<String, Object>> getUserInfo(@RequestParam("userId") Member userId) {
-        Map<String, Object> userInfo = new HashMap<>();
+        Map<String, Object> userInfo =  new HashMap<>();
 
         // Get roomNumber and userName based on userId
         Optional<Long> roomNumber = chatRoomService.getRoomNumberByUserId(userId);

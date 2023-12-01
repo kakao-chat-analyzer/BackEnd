@@ -4,7 +4,7 @@ import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 import project.kakaochatanalyzer.Login.entity.Member;
 
 import java.util.List;
-import java.util.Optional;
+import  java.util.Optional;
 
 public interface ChatRoomRepository {
 
