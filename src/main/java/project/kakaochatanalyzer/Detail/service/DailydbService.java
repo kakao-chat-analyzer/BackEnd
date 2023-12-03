@@ -49,18 +49,21 @@ public class DailydbService {
             dailyDbRepository.save(dailydb);
         });
 
-//        public void updateKeywords(String userId, Long chatroomNum, LocalDate date, List<String> keywords) {
-//            // Find the Dailydb entity based on user ID, chat room number, and date
-//            Optional<Dailydb> optionalDailydb = dailyDbRepository.findByMemberIdAndChatRoomAndDate(userId, chatroomNum, date);
-//
-//            optionalDailydb.orElse(dailydb -> {
-//                // Update the keywords in the found Dailydb entity
-//                dailydb.setKeywords(keywords);
-//                // Save the updated entity back to the database
-//                dailyDbRepository.save(dailydb);
-//            });
-//        }
+
 
         return 1;
     }
+    public void updateDatabaseWithKeywords(Dailydb dailydb, String processedData) {
+
+        dailydb.setKeyword(processedData);
+
+        dailyDbRepository.save(dailydb);
+    }
+
+    public Optional<Dailydb> findByDateAndChatroomNumAndUserId(LocalDate date, Long chatroomNum, String userId) {
+        // Assuming you have fields named 'date', 'chatroomNum', and 'userId' in your Dailydb entity
+
+        return dailyDbRepository.findByDateAndChatroomNumAndUserId(date, chatroomNum, userId);
+    }
+
 }

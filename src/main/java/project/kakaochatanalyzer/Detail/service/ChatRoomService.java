@@ -61,8 +61,8 @@ public class ChatRoomService {
         // 이는 데이터베이스 쿼리 등을 포함할 수 있습니다.
         // 예를 들어:
         // return chatRoomRepository.findRoomNumberByUserId(userId);
-        //return chatRoomRepository.findRoomNumberByUserId(member.getId());
-        return chatRoomRepository.findMaxRoomNumberByMemberId(member.getId());
+        return chatRoomRepository.findRoomNumberByUserId(member.getId());
+        //return chatRoomRepository.findMaxRoomNumberByMemberId(member.getId());
         //return chatRoomRepository.findRoomNumberByUserId(member.getId());
 
         // 위의 라인을 실제 로직으로 대체하세요.

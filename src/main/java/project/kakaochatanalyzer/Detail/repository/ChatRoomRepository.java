@@ -18,7 +18,7 @@ public interface ChatRoomRepository {
     static Optional<ChatRoom> findByMemberIdAndRoomNumber(Member memberId, Long roomNumber) {
         return null;
     }
-    //Optional <Long> findRoomNumberByUserId(Long memberId);
+    Optional <Long> findRoomNumberByUserId(Long memberId);
 
     //String findUserNameByUserId(String userId);
 }

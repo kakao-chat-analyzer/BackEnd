@@ -103,8 +103,33 @@ public class FileController {
         String userId = loggedInUser.getUserId();
         //3. dailydbController에서의 get랑 논리가 비슷한데 위의 date,chatroonNum,session 정보를 활용해서
         //4. dailyDb에서 해당 데이터의 totalmessage를 뽑아낸다.
+        Optional<Dailydb> dailydbOptional = dailydbService.findByDateAndChatroomNumAndUserId(date, chatroomNum, userId);
+        if (dailydbOptional.isEmpty()) {
+            return 0;
+        }
+
+        Dailydb dailydb = dailydbOptional.get();
+        String totalMessage = dailydb.getTotalMessage();
 
         //5. 이 totalmessage를 fastapi로 post로 보내는 것이다.
+        String fastApiUrl = "http://localhost:8000/api/keyword";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        // Create request entity with totalMessage
+        HttpEntity<String> requestEntity = new HttpEntity<>(totalMessage, headers);
+
+        // Send POST request to FastAPI
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.postForEntity(fastApiUrl, requestEntity, String.class);
+
+        // Step 3: Receive processed data from FastAPI
+        String processedData = responseEntity.getBody();
+
+        // Step 4: Update the database with the extracted keywords
+        dailydbService.updateDatabaseWithKeywords(dailydb, processedData);
+
 
 
         //6. 그럼 보내고 받아온 데이터는 키워드가 될 것인데
@@ -112,6 +137,7 @@ public class FileController {
         //8. 끝
 
 
-         return 1;
+        return 1;
     }
+
 }

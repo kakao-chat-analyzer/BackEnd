@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 import project.kakaochatanalyzer.Detail.entity.Dailydb;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 public interface SpringDataJpadailydbRepository extends JpaRepository<Dailydb, Long>, DailydbRepository {
@@ -19,4 +20,6 @@ public interface SpringDataJpadailydbRepository extends JpaRepository<Dailydb, L
     Optional<Dailydb> findBychatTimes(Integer chatTimes);
     @Override
     Optional<Dailydb> findBytotalMessage(String totalMessage);
+    @Override
+    Optional<Dailydb> findByDateAndChatroomNumAndUserId(LocalDate date, Long chatroomNum, String userId);
 }

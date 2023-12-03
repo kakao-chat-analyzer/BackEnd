@@ -17,4 +17,5 @@ public interface DailydbRepository{
     Optional<Dailydb> findBychatTimes(Integer chatTimes);
     Optional<Dailydb> findBytotalMessage(String totalMessage);
     List<Dailydb> findAll();
+    Optional<Dailydb> findByDateAndChatroomNumAndUserId(LocalDate date, Long chatroomNum, String userId);
 }
