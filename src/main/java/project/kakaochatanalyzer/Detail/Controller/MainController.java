@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 import project.kakaochatanalyzer.Detail.service.ChatRoomService;
 import project.kakaochatanalyzer.Login.entity.Member;
+import project.kakaochatanalyzer.Login.repository.MemberRepository;
+import project.kakaochatanalyzer.Login.service.MemberService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +43,7 @@ import java.util.Optional;
 public class MainController {
 
     private final ChatRoomService chatRoomService;
+    private MemberRepository memberRepository;
 
     public MainController(ChatRoomService chatRoomService) {this.chatRoomService = chatRoomService;}
 
@@ -51,17 +54,14 @@ public class MainController {
 //        return ResponseEntity.ok(loggedInUser);
 //    }
     @GetMapping("/chatroom")
-    public ResponseEntity<Map<String, Object>> getUserInfo(@RequestParam("userId") Member userId) {
+    public ResponseEntity<Map<String, Object>> getUserInfo(HttpSession session) {
         Map<String, Object> userInfo =  new HashMap<>();
-
+        Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         // Get roomNumber and userName based on userId
-        Optional<Long> roomNumber = chatRoomService.getRoomNumberByUserId(userId);
+        Optional<Long> roomNumber = chatRoomService.getRoomNumberByUserId(loggedInUser);
         //String userName = chatRoomService.getUserNameByUserId(userId);
-
         // Add the information to the response map
-        userInfo.put("userId", userId);
         userInfo.put("roomNumber", roomNumber);
-        //userInfo.put("userName", userName);
 
         return ResponseEntity.ok(userInfo);
     }

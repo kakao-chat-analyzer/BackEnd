@@ -28,8 +28,6 @@ public class DailydbService {
         return dailyDbRepository.findAll();
     }
 
-
-
     //형진씨 Task 2
     public int saveProcessedData(List<Dailydb> processed_dailydb, Member member, ChatRoom chatRoom) {
         // Dailydb에 processed_dailydb 데이터를 저장
@@ -48,9 +46,6 @@ public class DailydbService {
             //DB 저장
             dailyDbRepository.save(dailydb);
         });
-
-
-
         return 1;
     }
     public void updateDatabaseWithKeywords(Dailydb dailydb, String processedData) {
@@ -60,10 +55,10 @@ public class DailydbService {
         dailyDbRepository.save(dailydb);
     }
 
-    public Optional<Dailydb> findByDateAndChatRoomIdAndMemberId(LocalDate date, ChatRoom chatRoom, Member member) {
+    public Optional<Dailydb> findByDateAndChatRoomIdAndMemberId(LocalDate date, Long chatroomId, Long memberId) {
         // Assuming you have fields named 'date', 'chatroomNum', and 'userId' in your Dailydb entity
 
-        return dailyDbRepository.findByDateAndChatRoomIdAndMemberId(date,chatRoom,member);
+        return dailyDbRepository.findByDateAndChatRoomIdAndMemberId(date,chatroomId,memberId);
     }
 
 }

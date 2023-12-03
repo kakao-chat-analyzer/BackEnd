@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 import project.kakaochatanalyzer.Detail.entity.Dailydb;
 import project.kakaochatanalyzer.Detail.service.DailydbService;
 import project.kakaochatanalyzer.Login.entity.Member;
+import project.kakaochatanalyzer.Login.repository.MemberRepository;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
 public class DailydbController {
 
     private DailydbService dailydbService;
+    private MemberRepository memberRepository;
 
     public DailydbController(DailydbService dailydbService) {
         this.dailydbService = dailydbService;
@@ -25,18 +27,20 @@ public class DailydbController {
 
     //디테일 페이지
     @GetMapping("/analysis")
-    public ResponseEntity<List<Dailydb>> getDailyDb(HttpSession session,
-                                                    @RequestParam("date") LocalDate date,
-                                                    @RequestParam("chatroomNum") Long chatroomNum) {
+    public ResponseEntity<Optional<Dailydb>> getDailyDb(HttpSession session,
+                                                        @RequestParam("date") LocalDate date,
+                                                        @RequestParam("chatroomNum") Long chatRoomId) {
         //"/getDailyDb?date=2023-01-01&chatroomNum=123" 이 url으로 보내진다.
         // session 가져오기
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
-        //멤버 ID랑, chatroomNum와 date에 해당하는 값을 dailyDb에서 가져온다.
-        //가져온 데이터를 return해준다.
-        //밑에서 부터 작성하면 된다.
+        String userId = loggedInUser.getUserId();
+        Optional<Member> realUser = memberRepository.findByuserId(userId);
+        Long realId = realUser.get().getId();
 
-        List<Dailydb> entities = dailydbService.getAllEntities();
-        return ResponseEntity.ok(entities);
+        Optional<Dailydb> dailydbOptional = dailydbService.findByDateAndChatRoomIdAndMemberId(date, chatRoomId, realId);
+
+//        List<Dailydb> entities = dailydbService.getAllEntities();
+        return ResponseEntity.ok(dailydbOptional);
     }
     // Other methods as needed
 }
