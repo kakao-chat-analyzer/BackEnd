@@ -60,10 +60,10 @@ public class DailydbService {
         dailyDbRepository.save(dailydb);
     }
 
-    public Optional<Dailydb> findByDateAndChatroomNumAndUserId(LocalDate date, Long chatroomNum, String userId) {
+    public Optional<Dailydb> findByDateAndChatRoomIdAndMemberId(LocalDate date, ChatRoom chatRoom, Member member) {
         // Assuming you have fields named 'date', 'chatroomNum', and 'userId' in your Dailydb entity
 
-        return dailyDbRepository.findByDateAndChatroomNumAndUserId(date, chatroomNum, userId);
+        return dailyDbRepository.findByDateAndChatRoomIdAndMemberId(date,chatRoom,member);
     }
 
 }

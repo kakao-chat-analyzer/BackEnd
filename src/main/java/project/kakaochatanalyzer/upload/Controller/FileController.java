@@ -92,7 +92,7 @@ public class FileController {
     @PostMapping("/keyword")
     public int sendTextToFastAPI(HttpSession session,
                                  @RequestParam("date") LocalDate date,
-                                 @RequestParam("chatroomNum") Long chatroomNum) {
+                                 @RequestParam("chatroomNum") ChatRoom chatRoom) {
         //키워드 추출 할 때 누름..
         //위에 fastapi에 보내는 방식을 그대로 활용해서
         // post로 데이터를 보내서 받아온 값을 반환 및 db업데이트를 한다.
@@ -103,7 +103,7 @@ public class FileController {
         String userId = loggedInUser.getUserId();
         //3. dailydbController에서의 get랑 논리가 비슷한데 위의 date,chatroonNum,session 정보를 활용해서
         //4. dailyDb에서 해당 데이터의 totalmessage를 뽑아낸다.
-        Optional<Dailydb> dailydbOptional = dailydbService.findByDateAndChatroomNumAndUserId(date, chatroomNum, userId);
+        Optional<Dailydb> dailydbOptional = dailydbService.findByDateAndChatRoomIdAndMemberId(date, chatRoom, loggedInUser);
         if (dailydbOptional.isEmpty()) {
             return 0;
         }
