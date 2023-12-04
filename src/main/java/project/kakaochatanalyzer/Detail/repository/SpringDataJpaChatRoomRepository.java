@@ -2,6 +2,7 @@ package project.kakaochatanalyzer.Detail.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public interface SpringDataJpaChatRoomRepository extends JpaRepository<ChatRoom,
 
     @Override
     @Query("SELECT c.roomNumber FROM ChatRoom c WHERE c.member.id = :memberId")
-    Optional<Long> findRoomNumberByUserId(Long memberId);
+    List<Long> findRoomNumberByMemberId(@Param("memberId") Long memberId);
 
 }
