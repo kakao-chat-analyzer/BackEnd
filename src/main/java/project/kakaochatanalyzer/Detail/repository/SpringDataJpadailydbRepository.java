@@ -15,8 +15,8 @@ public interface SpringDataJpadailydbRepository extends JpaRepository<Dailydb, L
     Optional<Dailydb> findBychatRoom(ChatRoom chatRoom);
     @Override
     Optional<Dailydb> findByfrequently(Integer frequently);
-    @Override
-    Optional<Dailydb> findBykeyword(String keyword);
+//    @Override
+//    Optional<Dailydb> findBykeyword(String keyword);
     @Override
     Optional<Dailydb> findBychatTimes(Integer chatTimes);
     @Override

@@ -18,6 +18,7 @@ import project.kakaochatanalyzer.Login.repository.MemberRepository;
 import project.kakaochatanalyzer.Login.service.MemberService;
 
 import java.io.IOException;
+import java.security.Key;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -122,34 +123,53 @@ public class FileController {
             return 0;
         }
         // Keyword -> NULL 값이 있으면 실행
+        System.out.println("토탈 메시지 받는 작업");
         Dailydb dailydb = dailydbOptional.get();
         String totalMessage = dailydb.getTotalMessage();
 
+        System.out.println(totalMessage);
         //5. 이 totalmessage를 fastapi로 post로 보내는 것이다.
         String fastApiUrl = "http://localhost:8000/api/keyword";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        // Create request entity with totalMessage
-        HttpEntity<String> requestEntity = new HttpEntity<>(totalMessage, headers);
+
+        Keyword keyword = new Keyword();
+        keyword.setTotalMessage(totalMessage);
+        String asd = "null";
+        List<String> s = List.of(asd);
+        keyword.setKeywords(s);
+        HttpEntity<Keyword> requestEntity = new HttpEntity<>(keyword, headers);
+        System.out.println("보내다");
 
         // Send POST request to FastAPI
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(fastApiUrl, requestEntity, String.class);
+        ResponseEntity<Keyword> responseEntity = restTemplate.exchange(
+                fastApiUrl,
+                HttpMethod.POST,
+                requestEntity,
+//                String.class  //Dailydb class로 변환
+                Keyword.class
+//                new ParameterizedTypeReference<Map<String, List<Keyword>>>() {}
+        );
+//        ResponseEntity<String> responseEntity = restTemplate.postForEntity(fastApiUrl, requestEntity, String.class);
 
         // Step 3: Receive processed data from FastAPI
-        String processedData = responseEntity.getBody();
-
+        System.out.println(responseEntity.getBody());
+        Keyword processedData = responseEntity.getBody();
+        System.out.println("Success");
+        System.out.println(processedData);
+        System.out.println(processedData.getKeywords());
         // Step 4: Update the database with the extracted keywords
-        dailydbService.updateDatabaseWithKeywords(dailydb, processedData);
-
+        dailydbService.updateDatabaseWithKeywords(dailydb, processedData.getKeywords());
+        System.out.println("완전 성공");
 
         //6. 그럼 보내고 받아온 데이터는 키워드가 될 것인데
         //7. 그 db에서 조회한 그 부분의 keyword에 채워 넣어야 한다  (db의 비어있는 keyword 채워넣기)
         //8. 끝
 
-        return 1;
+        return 200;
     }
 
 }

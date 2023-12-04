@@ -39,7 +39,8 @@ public class Dailydb {
     private List<String> dailyUser;
 
     @Column(name = "keyword")
-    private String keyword;
+    @Convert(converter = StringListConverter.class)
+    private List<String> keyword;
 
     @Column(name = "chattimes")
     private Integer chatTimes;
@@ -111,11 +112,11 @@ public class Dailydb {
         this.date = date;
     }
 
-    public String getKeyword() {
+    public List<String> getKeyword() {
         return keyword;
     }
 
-    public void setKeyword(String keyword) {
+    public void setKeyword(List<String> keyword) {
         this.keyword = keyword;
     }
 

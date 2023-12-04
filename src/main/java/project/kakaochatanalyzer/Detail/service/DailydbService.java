@@ -48,7 +48,7 @@ public class DailydbService {
         });
         return 1;
     }
-    public void updateDatabaseWithKeywords(Dailydb dailydb, String processedData) {
+    public void updateDatabaseWithKeywords(Dailydb dailydb, List<String> processedData) {
 
         dailydb.setKeyword(processedData);
 
