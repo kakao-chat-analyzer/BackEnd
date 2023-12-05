@@ -57,12 +57,12 @@ public class MainController {
     public ResponseEntity<Map<String, Object>> getUserInfo(HttpSession session) {
         //// DUMMY ////
         Member members = new Member();
-//        members.setId(13L);
-//        members.setUserId("123124");
-//        members.setUserName("GOGOGO");
-//        members.setUserPw("1234442244");
-//        members.setUserEmail("123@example.com");
-//        session.setAttribute("loggedInUser", members);
+        members.setId(13L);
+        members.setUserId("123124");
+        members.setUserName("GOGOGO");
+        members.setUserPw("1234442244");
+        members.setUserEmail("123@example.com");
+        session.setAttribute("loggedInUser", members);
         //// DUMMY ////
         Map<String, Object> userInfo =  new HashMap<>();
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");

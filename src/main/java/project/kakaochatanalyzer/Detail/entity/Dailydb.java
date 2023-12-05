@@ -8,8 +8,10 @@ import project.kakaochatanalyzer.Login.entity.Member;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 //상세페이지 db
+
 @Entity
 @Table(name = "dailydb")
 public class Dailydb {
@@ -29,7 +31,8 @@ public class Dailydb {
     @Column(name ="date")
     private LocalDate date;
     @Column(name = "frequently")
-    private Integer frequently;
+    @Convert(converter = StringListConverter.class)
+    private List<String> frequently;
     @Column(name = "dailyMessages",columnDefinition = "TEXT",length = 100000)
     @Convert(converter = StringListConverter.class)
     private List<String> dailyMessages;
@@ -80,11 +83,11 @@ public class Dailydb {
         this.chatRoom = chatRoom;
     }
 
-    public Integer getFrequently() {
+    public List<String> getFrequently() {
         return frequently;
     }
 
-    public void setFrequently(Integer frequently) {
+    public void setFrequently(List<String> frequently) {
         this.frequently = frequently;
     }
 
