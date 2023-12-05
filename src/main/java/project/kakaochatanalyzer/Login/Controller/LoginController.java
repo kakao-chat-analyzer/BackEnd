@@ -36,6 +36,8 @@ public class LoginController {
 
             // userId에 따른 유저 이름 가져오기
             String userName = memberService.getUserNameById(userId);
+            Long id = memberService.getUserNameByuserId(userId);
+            member.setId(id);
             member.setUserId(userId);
             member.setUserName(userName);
 

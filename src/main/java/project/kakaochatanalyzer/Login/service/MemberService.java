@@ -40,7 +40,12 @@ public class MemberService {
                 .map(Member::getUserName)
                 .orElseThrow(() -> new IllegalStateException("ID에 해당하는 사용자가 없습니다."));
     }
-
+    public Long getUserNameByuserId(String userId){
+        // userId를 이용해 해당 유저 이름 찾기
+        return memberRepository.findByuserId(userId)
+                .map(Member::getId)
+                .orElseThrow(() -> new IllegalStateException("ID에 해당하는 사용자가 없습니다."));
+    }
 //    public List<Member> findMembers(){
 //        return memberRepository.findAll();
 //    }
