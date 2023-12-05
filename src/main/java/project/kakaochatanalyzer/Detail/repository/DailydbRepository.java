@@ -18,4 +18,6 @@ public interface DailydbRepository{
     Optional<Dailydb> findBytotalMessage(String totalMessage);
     List<Dailydb> findAll();
     Optional<Dailydb> findByDateAndChatRoomIdAndMemberId(LocalDate date, Long chatroomId, Long memberId);
+    List<Dailydb> findByChatRoomIdAndMemberId(Long memberId, Long chatroomId);
+
 }

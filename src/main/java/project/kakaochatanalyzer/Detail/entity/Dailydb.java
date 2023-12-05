@@ -25,6 +25,8 @@ public class Dailydb {
     @JoinColumn(name = "memberId")
     private Member member;
 
+    @Column(name="num_conversations")
+    private int numConversations;
     @ManyToOne
     @JoinColumn(name = "chatroomId")
     private ChatRoom chatRoom;
@@ -137,5 +139,13 @@ public class Dailydb {
 
     public void setTotalMessage(String totalMessage) {
         this.totalMessage = totalMessage;
+    }
+
+    public int getNumConversations() {
+        return numConversations;
+    }
+
+    public void setNumConversations(int numConversations) {
+        this.numConversations = numConversations;
     }
 }

@@ -61,4 +61,8 @@ public class DailydbService {
         return dailyDbRepository.findByDateAndChatRoomIdAndMemberId(date,chatroomId,memberId);
     }
 
+    public List<Dailydb> findByChatRoomIdAndMemberId(Long memberId, Long chatroomId) {
+        return dailyDbRepository.findByChatRoomIdAndMemberId(memberId, chatroomId);
+    }
+
 }
