@@ -57,6 +57,7 @@ public class ChatRoomService {
 
 
     public List<Long> getRoomNumberByUserId(Member member) {
+        System.out.println(member.getId());
         return chatRoomRepository.findRoomNumberByMemberId(member.getId());
         //return chatRoomRepository.findMaxRoomNumberByMemberId(member.getId());
         //return chatRoomRepository.findRoomNumberByUserId(member.getId());
