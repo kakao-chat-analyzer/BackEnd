@@ -42,8 +42,8 @@ public class DailydbController {
         members.setUserEmail("123@example.com");
         session.setAttribute("loggedInUser", members);
         //// DUMMY ////
-
         //"/getDailyDb?date=2023-01-01&chatroomNum=123" 이 url으로 보내진다.
+
         // session 가져오기
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         String userId = loggedInUser.getUserId();
@@ -51,9 +51,6 @@ public class DailydbController {
         Long realId = realUser.get().getId();
 
         Optional<Dailydb> dailydbOptional = dailydbService.findByDateAndChatRoomIdAndMemberId(date, chatRoomId, realId);
-
-//        List<Dailydb> entities = dailydbService.getAllEntities();
         return ResponseEntity.ok(dailydbOptional);
     }
-    // Other methods as needed
 }
