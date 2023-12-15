@@ -23,5 +23,5 @@ public interface SpringDataJpadailydbRepository extends JpaRepository<Dailydb, L
     @Override
     Optional<Dailydb> findByDateAndChatRoomIdAndMemberId(LocalDate date, Long chatroomId, Long memberId);
     @Override
-    List<Dailydb> findByChatRoomIdAndMemberId(Long memberId, Long chatroomId);
+    List<Dailydb> findByMemberIdAndChatRoomId(Long memberId, Long chatroomId);
 }

@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Transactional
 public class DailydbService {
+
     private DailydbRepository dailyDbRepository;
     private ChatRoomRepository chatRoomRepository;
     private MemberRepository memberRepository;
@@ -61,8 +62,8 @@ public class DailydbService {
         return dailyDbRepository.findByDateAndChatRoomIdAndMemberId(date,chatroomId,memberId);
     }
 
-    public List<Dailydb> findByChatRoomIdAndMemberId(Long memberId, Long chatroomId) {
-        return dailyDbRepository.findByChatRoomIdAndMemberId(memberId, chatroomId);
+    public List<Dailydb> findByMemberIdAndChatRoomId(Long memberId, Long chatroomId) {
+        return dailyDbRepository.findByMemberIdAndChatRoomId(memberId, chatroomId);
     }
 
 }
