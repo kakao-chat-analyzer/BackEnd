@@ -57,7 +57,7 @@ public class MainController {
         List<Dailydb> allConversations = dailydbService.findByMemberIdAndChatRoomId(memberId, chatroomNum);
         // 채팅방 채팅 횟수 거르기
         List<Dailydb> extractConversations = extractChat(allConversations);
-        // 랜덤하게 4~5 채팅방 및 대화 추출
+        // 랜덤하게 4개의 채팅방 및 대화 추출
         List<ShuffleConversation> randomConversations = randomConv(extractConversations);
         return randomConversations;
     }
@@ -77,8 +77,8 @@ public class MainController {
     public List<ShuffleConversation> randomConv(List<Dailydb> extractConversations){
         //데이터 랜덤 셔플
         Collections.shuffle(extractConversations);
-        // 앞 5개 채팅방 요소만 뽑기
-        List<Dailydb> shuffleConversation = extractConversations.subList(0,5);
+        // 앞 4개 채팅방 요소만 뽑기
+        List<Dailydb> shuffleConversation = extractConversations.subList(0,4);
         // 채팅방의 대화를 랜덤하게 추출
         List<ShuffleConversation> shuffleResult = randomMessage(shuffleConversation);
         return shuffleResult;
@@ -106,9 +106,9 @@ public class MainController {
         return totalConversation;
     }
     public List<String> getRange(List<String> temp, int size){
-        //size~ size+10 idx 리스트 추출
+        //size~ size+8 idx 리스트 추출
         List<String> listTemp = new ArrayList<>();
-        for (int i = size; i<size+10; i++){
+        for (int i = size; i<size+8; i++){
             listTemp.add(temp.get(i));
         }
         return listTemp;
