@@ -33,9 +33,9 @@ public class MainController {
 
         Map<String, Object> userInfo =  new HashMap<>();
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
-        List<Long> roomNumber = chatRoomService.getRoomNumberByUserId(loggedInUser);
+        List<Long> roomNumber = chatRoomService.findIdByMemberId(loggedInUser);
 
-        userInfo.put("roomNumber", roomNumber);
+        userInfo.put("chatroomNum", roomNumber);
 
         return ResponseEntity.ok(userInfo);
     }

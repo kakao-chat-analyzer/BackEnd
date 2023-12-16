@@ -18,7 +18,7 @@ public interface SpringDataJpaChatRoomRepository extends JpaRepository<ChatRoom,
     Optional<Long> findMaxRoomNumberByMemberId(Long memberId);
 
     @Override
-    @Query("SELECT c.roomNumber FROM ChatRoom c WHERE c.member.id = :memberId")
-    List<Long> findRoomNumberByMemberId(@Param("memberId") Long memberId);
+    @Query("SELECT c.id FROM ChatRoom c WHERE c.member.id = :memberId")
+    List<Long> findIdByMemberId(@Param("memberId") Long memberId);
 
 }

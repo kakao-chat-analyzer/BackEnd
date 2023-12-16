@@ -37,12 +37,12 @@ public class FileController {
     @PostMapping("/file")
     public ResponseEntity<List<Dailydb>> sendTextToFastAPI(@RequestParam("file") MultipartFile file, HttpSession session) {
         //// DUMMY ////
-        Member members = new Member();
-        members.setUserId("123124");
-        members.setUserName("GOGOGO");
-        members.setUserPw("1234442244");
-        members.setUserEmail("123@example.com");
-        session.setAttribute("loggedInUser", members);
+//        Member members = new Member();
+//        members.setUserId("123124");
+//        members.setUserName("GOGOGO");
+//        members.setUserPw("1234442244");
+//        members.setUserEmail("123@example.com");
+//        session.setAttribute("loggedInUser", members);
         //// DUMMY ////
 
         String URL = "http://localhost:8000/api/file";
