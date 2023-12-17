@@ -82,12 +82,12 @@ public class FileController {
                                  @RequestParam("date") LocalDate date,
                                  @RequestParam("chatroomNum") Long chatRoomId) {
         //// DUMMY ////
-        Member members = new Member();
-        members.setUserId("123124");
-        members.setUserName("GOGOGO");
-        members.setUserPw("1234442244");
-        members.setUserEmail("123@example.com");
-        session.setAttribute("loggedInUser", members);
+//        Member members = new Member();
+//        members.setUserId("123124");
+//        members.setUserName("GOGOGO");
+//        members.setUserPw("1234442244");
+//        members.setUserEmail("123@example.com");
+//        session.setAttribute("loggedInUser", members);
         //// DUMMY ////
         //키워드 추출 할 때 누름..
         // localhost:6797/api/user?date=2023-03-14?chatroomNum=30

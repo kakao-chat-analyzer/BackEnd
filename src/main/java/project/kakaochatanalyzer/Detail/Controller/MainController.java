@@ -22,13 +22,13 @@ public class MainController {
     @GetMapping("/chatroom")
     public ResponseEntity<Map<String, Object>> getUserInfo(HttpSession session) {
         //// DUMMY ////
-        Member members = new Member();
-        members.setId(13L);
-        members.setUserId("123124");
-        members.setUserName("GOGOGO");
-        members.setUserPw("1234442244");
-        members.setUserEmail("123@example.com");
-        session.setAttribute("loggedInUser", members);
+//        Member members = new Member();
+//        members.setId(13L);
+//        members.setUserId("123124");
+//        members.setUserName("GOGOGO");
+//        members.setUserPw("1234442244");
+//        members.setUserEmail("123@example.com");
+//        session.setAttribute("loggedInUser", members);
         //// DUMMY ////
 
         Map<String, Object> userInfo =  new HashMap<>();
@@ -43,13 +43,13 @@ public class MainController {
     public List<ShuffleConversation> getRandomConversations(HttpSession session,
                                                 @RequestParam("chatroomNum") Long chatroomNum) {
         //// DUMMY ////
-        Member members = new Member();
-        members.setId(13L);
-        members.setUserId("123124");
-        members.setUserName("GOGOGO");
-        members.setUserPw("1234442244");
-        members.setUserEmail("123@example.com");
-        session.setAttribute("loggedInUser", members);
+//        Member members = new Member();
+//        members.setId(13L);
+//        members.setUserId("123124");
+//        members.setUserName("GOGOGO");
+//        members.setUserPw("1234442244");
+//        members.setUserEmail("123@example.com");
+//        session.setAttribute("loggedInUser", members);
         //// DUMMY ////
         Member loggedInUser = (Member) session.getAttribute("loggedInUser");
         Long memberId = loggedInUser.getId();
