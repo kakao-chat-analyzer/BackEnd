@@ -40,7 +40,7 @@ public class MainController {
         return ResponseEntity.ok(userInfo);
     }
     @GetMapping("/detail")
-    public List<ShuffleConversation> getRandomConversations(HttpSession session,
+    public ResponseEntity<List<ShuffleConversation>> getRandomConversations(HttpSession session,
                                                 @RequestParam("chatroomNum") Long chatroomNum) {
         //// DUMMY ////
 //        Member members = new Member();
@@ -59,7 +59,7 @@ public class MainController {
         List<Dailydb> extractConversations = extractChat(allConversations);
         // 랜덤하게 4개의 채팅방 및 대화 추출
         List<ShuffleConversation> randomConversations = randomConv(extractConversations);
-        return randomConversations;
+        return ResponseEntity.ok(randomConversations);
     }
     public List<Dailydb> extractChat(List<Dailydb> allConversation){
         // 채팅 수 15개 이상의 채팅방만 추출하기
