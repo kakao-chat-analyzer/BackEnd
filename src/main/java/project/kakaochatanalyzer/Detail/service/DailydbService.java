@@ -1,5 +1,6 @@
 package project.kakaochatanalyzer.Detail.service;
 
+import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
@@ -64,6 +65,9 @@ public class DailydbService {
 
     public List<Dailydb> findByMemberIdAndChatRoomId(Long memberId, Long chatroomId) {
         return dailyDbRepository.findByMemberIdAndChatRoomId(memberId, chatroomId);
+    }
+    public List<LocalDate> findDateByMemberIdAndChatRoomId(Long memberId, Long chatroomId){
+        return dailyDbRepository.findDateByMemberIdAndChatRoomId(memberId, chatroomId);
     }
 
 }

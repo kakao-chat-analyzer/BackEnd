@@ -1,5 +1,6 @@
 package project.kakaochatanalyzer.Detail.repository;
 
+import jakarta.persistence.Tuple;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 import project.kakaochatanalyzer.Detail.entity.Dailydb;
 import project.kakaochatanalyzer.Login.entity.Member;
@@ -19,5 +20,6 @@ public interface DailydbRepository{
     List<Dailydb> findAll();
     Optional<Dailydb> findByDateAndChatRoomIdAndMemberId(LocalDate date, Long chatroomId, Long memberId);
     List<Dailydb> findByMemberIdAndChatRoomId(Long memberId, Long chatroomId);
+    List<LocalDate> findDateByMemberIdAndChatRoomId(Long memberId, Long chatroomId);
 
 }

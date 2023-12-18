@@ -42,6 +42,7 @@ public class MainController {
     @GetMapping("/detail")
     public ResponseEntity<List<ShuffleConversation>> getRandomConversations(HttpSession session,
                                                 @RequestParam("chatroomNum") Long chatroomNum) {
+        System.out.println("안녕");
         //// DUMMY ////
 //        Member members = new Member();
 //        members.setId(13L);
@@ -59,6 +60,8 @@ public class MainController {
         List<Dailydb> extractConversations = extractChat(allConversations);
         // 랜덤하게 4개의 채팅방 및 대화 추출
         List<ShuffleConversation> randomConversations = randomConv(extractConversations);
+        System.out.println("3");
+        System.out.println(randomConversations);
         return ResponseEntity.ok(randomConversations);
     }
     public List<Dailydb> extractChat(List<Dailydb> allConversation){
@@ -78,7 +81,17 @@ public class MainController {
         //데이터 랜덤 셔플
         Collections.shuffle(extractConversations);
         // 앞 4개 채팅방 요소만 뽑기
-        List<Dailydb> shuffleConversation = extractConversations.subList(0,4);
+        System.out.println("asdasd");
+        System.out.println(extractConversations);
+        System.out.println("Index Error");
+        List<Dailydb> shuffleConversation;
+        try{
+            shuffleConversation = extractConversations.subList(0,4);
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Index Error");
+            shuffleConversation = extractConversations.subList(0,2);
+        }
+
         // 채팅방의 대화를 랜덤하게 추출
         List<ShuffleConversation> shuffleResult = randomMessage(shuffleConversation);
         return shuffleResult;

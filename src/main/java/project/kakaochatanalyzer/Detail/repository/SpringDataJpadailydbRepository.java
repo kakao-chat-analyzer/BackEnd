@@ -1,6 +1,9 @@
 package project.kakaochatanalyzer.Detail.repository;
 
+import jakarta.persistence.Tuple;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import project.kakaochatanalyzer.Detail.entity.ChatRoom;
 import project.kakaochatanalyzer.Detail.entity.Dailydb;
 import project.kakaochatanalyzer.Login.entity.Member;
@@ -24,4 +27,6 @@ public interface SpringDataJpadailydbRepository extends JpaRepository<Dailydb, L
     Optional<Dailydb> findByDateAndChatRoomIdAndMemberId(LocalDate date, Long chatroomId, Long memberId);
     @Override
     List<Dailydb> findByMemberIdAndChatRoomId(Long memberId, Long chatroomId);
+    @Override
+    List<LocalDate> findDateByMemberIdAndChatRoomId(Long memberId, Long chatroomId);
 }
