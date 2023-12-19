@@ -59,16 +59,15 @@ public class DailydbController {
     }
     @GetMapping("/date")
     public ResponseEntity<List<LocalDate>> getDailyDate(HttpSession session,
-                                                     @RequestParam("date") LocalDate date,
                                                      @RequestParam("chatroomNum") Long chatRoomId) {
         //// DUMMY ////
-        Member members = new Member();
-        members.setId(13L);
-        members.setUserId("123124");
-        members.setUserName("GOGOGO");
-        members.setUserPw("1234442244");
-        members.setUserEmail("123@example.com");
-        session.setAttribute("loggedInUser", members);
+//        Member members = new Member();
+//        members.setId(13L);
+//        members.setUserId("123124");
+//        members.setUserName("GOGOGO");
+//        members.setUserPw("1234442244");
+//        members.setUserEmail("123@example.com");
+//        session.setAttribute("loggedInUser", members);
         //// DUMMY ////
         //"/getDailyDb?date=2023-01-01&chatroomNum=123" 이 url으로 보내진다.
 
